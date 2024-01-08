@@ -3,3 +3,6 @@
 .idea/
 .venv/
 .vscode/
+
+# PyCharm local bytecode complied
+__pycache__/
