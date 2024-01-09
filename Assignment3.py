@@ -8,12 +8,13 @@
 import OutputUtil as OU
 
 
+
 # [1] Define a function to read in the United States data from file "us-states.csv" into a two-dimensional list..
 def read_file(fileName):
     with open(fileName) as file:
         lines = file.readlines()
         states = [line.strip().split(',') for line in lines]
-        return states[0], states[1:]
+        return states[0],states[1:]
         # print(states)
 
 
