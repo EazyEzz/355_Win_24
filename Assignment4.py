@@ -9,15 +9,16 @@
 import requests
 import html5lib
 from bs4 import BeautifulSoup
+import OutputUtil as ou
 
 
-#[2] Define a function to print the HTML content of a webpage at a given URL (uniform resource locator, web address)
+# [2] Define a function to print the HTML content of a webpage at a given URL (uniform resource locator, web address)
 def print_page_content(url):
     r = requests.get(url)
     print(r.content)
 
 
-#[3] Define a function to parse the HTML content for a given URL.
+# [3] Define a function to parse the HTML content for a given URL.
 def parse_page_content(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html5lib')
@@ -28,6 +29,7 @@ def parse_page_content(url):
 def next_text(itr):
     return next(itr).text
 
+
 # [5] Define a function to get the next int item from an iterator
 def next_int(itr):
     return int(next_text(itr).replace(',', ''))
@@ -36,11 +38,11 @@ def next_int(itr):
 # [6]Define a function to scrape the site.
 def scrape_covid_data(dict_countries_population):
     url = 'https://www.worldometers.info/coronavirus/countries-where-coronavirus-has-spread/'
-    # get URL html
     page = requests.get(url)
     soup = BeautifulSoup(page.text, 'html.parser')
     data = []
     itr = iter(soup.find_all('td'))
+    # This loop will keep repeating as long as there is data available in the iterator
     while True:
         try:
             country = next_text(itr)
@@ -52,18 +54,20 @@ def scrape_covid_data(dict_countries_population):
             if country in ['Channel Islands', 'MS Zaandam']:
                 continue
             population = dict_countries_population[country]
-            data.append([country, population, cases, deaths, continent])
+            percent_cases = round(100 * cases/population, 2)
+            percent_deaths = round(100 * deaths/cases, 2)
+            data.append([country, continent, population, cases, percent_cases, deaths, percent_deaths])
         except StopIteration:
             break
-
-    # Sort the data by the number of deaths
-    # data.sort(key=lambda row: row[3], reverse=True)
     return data
 
 
 # [7] Define a function get_country_population(url) that will scrape this website to get country populations:
 # https://www.worldometers.info/world-population/population-by-country/.
 # Build a dictionary in which the keys are country names and the values are country populations.
+# [8] Add this population data to the previously scraped data.
+# This is important information because the numbers of COVID cases and deaths per country are
+# more significant relative to that country's population.
 def scrape_population_data():
     url = 'https://www.worldometers.info/world-population/population-by-country/'
     page = requests.get(url)
@@ -75,26 +79,51 @@ def scrape_population_data():
             no = next_text(itr)
             country = next_text(itr)
             population = next_int(itr)
-            yearly_change = next_text(itr)
-            net_change = next_text(itr)
-            density = next_text(itr)
-            land_area = next_text(itr)
-            migrants = next_text(itr)
-            fertility = next_text(itr)
-            median_age = next_text(itr)
-            urban_pop = next_text(itr)
-            world_share = next_text(itr)
+            for i in range(9):
+                junk = next_text(itr)
             dict_countries[country] = population
         except StopIteration:
             break
     return dict_countries
+
+
+def add_wiki_link(data, i, j):
+    name = data[i][j]
+    wikiname = name
+    if wikiname == "Australia/Oceania":
+        wikiname = "Australia"
+    href = "https://en.wikipedia.org/wiki/" + wikiname.replace(' ', '_')
+    a_attributes = 'href="' + href + '" target="_blank"'
+    data[i][j] = ou.create_element(ou.TAG_A, name, a_attributes)
+
+
+def make_output(data, assn):
+    title = "COVID Data By Country"
+    align = ["L", "L", "R", "R", "R","R", "R"]
+    types = ["S", "S", "N", "N", "N", "N", "N"]
+    heads = ["Country", "Continent", "Population", "Cases", "% Cases", "Deaths", "% Deaths"]
+    output_file = "Assignment4.html"
+    ou.write_tt_file(assn + ".txt", title, heads, data, align)
+    ou.write_csv_file(assn + ".csv",heads, data)
+    ou.write_xml_file(assn + ".xml", title, heads, data, True)
+    for i in range(len(data)):
+        add_wiki_link(data, i, 0)
+        add_wiki_link(data, i, 1)
+    ou.add_stats(data, [2, 3, 4, 5, 6], 0, 1, True)
+    ou.write_html_file(output_file, title, heads, types, align, data, True)
+
+# [9] Define a function to write the data in a text table. Don't hard code values - pass parameters
+# [10] Define a function to write the data in CSV format. Don't hard code values - pass parameters
+
+
 
 def main():
     # url = 'https://www.google.com'
     # print_page_content(url)
     # parse_page_content(url)
     dict_countries_population = scrape_population_data()
-    scrape_covid_data(dict_countries_population)
+    data = scrape_covid_data(dict_countries_population)
+    make_html(data)
 
 
 if __name__ == '__main__':

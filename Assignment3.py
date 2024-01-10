@@ -36,8 +36,6 @@ def main():
         states[i][0] = OU.create_element(OU.TAG_A, name, a_attributes)
     OU.write_html_file(output_file, title, headers, types, alignments, states, True)
 
-    # read_file('States.csv')
-
 
 if __name__ == '__main__':
     main()

@@ -3,11 +3,11 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 h1 {
-    color: blue;
+    color: Green;
     text-align: center;
 }
 h3 {
-    color: purple;
+    color: Green;
 }
 .vericaltext {
  writing-mode: vertical-lr;
@@ -23,14 +23,14 @@ th > a {
     color: white;
 }
 th {
-    background-color: blue;
+    background-color: Green;
     color: white;
 }
 tr:nth-child(even) {
     background-color: white;
-    color: red;
+    color: orange;
 }
 tr:nth-child(odd) {
-    background-color: red;
+    background-color: orange;
     color: white;
 }
