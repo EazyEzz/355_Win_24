@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Essmer Sanchez Webpage</title>
+    <style>
+        .submenu { margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome To Essmer's Page</h1>
+    <ul>
+        <li>Course
+            <ul class="submenu">
+                <li><a href="LINK_TO_KUROSE">Kurose and Ross Author Page</a></li>
+                <li><a href="http://w3schools.com">W3Schools</a></li>
+                <li><a href="https://www.geeksforgeeks.org/web-development/ ">GeeksforGeeks - Web Development</a></li>
+            </ul>
+        </li>
+        <li>Browser
+            <ul class="submenu">
+                <li>Navigator: <span id="navigatorInfo"></span></li>
+            </ul>
+
+        </li>
+    </ul>
+
+    <script>
+            const navigatorInfo = document.getElementById('navigatorInfo');
+            navigatorInfo.innerHTML = `
+            <div><strong>appName:</strong> ${navigator.appName}</div>
+            <div><strong>product:</strong> ${navigator.product}</div>
+            <div><strong>appVersion:</strong> ${navigator.appVersion}</div>
+            <div><strong>userAgent:</strong> ${navigator.userAgent}</div>
+            <div><strong>platform:</strong> ${navigator.platform}</div>
+            <div><strong>language:</strong> ${navigator.language}</div>
+            `;
+    </script>
+
+</body>
+</html>
