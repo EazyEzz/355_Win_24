@@ -5,18 +5,18 @@
 <Country>United States</Country>
 <Continent>North America</Continent>
 <Population>339996563</Population>
-<Cases>110428077</Cases>
-<PctCases>32.48</PctCases>
-<Deaths>1191639</Deaths>
+<Cases>110462560</Cases>
+<PctCases>32.49</PctCases>
+<Deaths>1191815</Deaths>
 <PctDeaths>1.08</PctDeaths>
 </row>
 <row>
 <Country>India</Country>
 <Continent>Asia</Continent>
 <Population>1428627663</Population>
-<Cases>45020333</Cases>
+<Cases>45020942</Cases>
 <PctCases>3.15</PctCases>
-<Deaths>533409</Deaths>
+<Deaths>533412</Deaths>
 <PctDeaths>1.18</PctDeaths>
 </row>
 <row>
@@ -32,18 +32,18 @@
 <Country>Germany</Country>
 <Continent>Europe</Continent>
 <Population>83294633</Population>
-<Cases>38788696</Cases>
+<Cases>38790256</Cases>
 <PctCases>46.57</PctCases>
-<Deaths>180875</Deaths>
+<Deaths>180956</Deaths>
 <PctDeaths>0.47</PctDeaths>
 </row>
 <row>
 <Country>Brazil</Country>
 <Continent>South America</Continent>
 <Population>216422446</Population>
-<Cases>38210864</Cases>
+<Cases>38230814</Cases>
 <PctCases>17.66</PctCases>
-<Deaths>708638</Deaths>
+<Deaths>708739</Deaths>
 <PctDeaths>1.85</PctDeaths>
 </row>
 <row>
@@ -113,8 +113,8 @@
 <Country>Australia</Country>
 <Continent>Australia/Oceania</Continent>
 <Population>26439111</Population>
-<Cases>11765039</Cases>
-<PctCases>44.5</PctCases>
+<Cases>11766772</Cases>
+<PctCases>44.51</PctCases>
 <Deaths>23881</Deaths>
 <PctDeaths>0.2</PctDeaths>
 </row>
@@ -185,9 +185,9 @@
 <Country>Poland</Country>
 <Continent>Europe</Continent>
 <Population>41026067</Population>
-<Cases>6643818</Cases>
-<PctCases>16.19</PctCases>
-<Deaths>120352</Deaths>
+<Cases>6644654</Cases>
+<PctCases>16.2</PctCases>
+<Deaths>120368</Deaths>
 <PctDeaths>1.81</PctDeaths>
 </row>
 <row>
@@ -302,9 +302,9 @@
 <Country>Czech Republic (Czechia)</Country>
 <Continent>Europe</Continent>
 <Population>10495295</Population>
-<Cases>4752678</Cases>
-<PctCases>45.28</PctCases>
-<Deaths>43423</Deaths>
+<Cases>4752996</Cases>
+<PctCases>45.29</PctCases>
+<Deaths>43434</Deaths>
 <PctDeaths>0.91</PctDeaths>
 </row>
 <row>
@@ -392,8 +392,8 @@
 <Country>Serbia</Country>
 <Continent>Europe</Continent>
 <Population>7149077</Population>
-<Cases>2609964</Cases>
-<PctCases>36.51</PctCases>
+<Cases>2611359</Cases>
+<PctCases>36.53</PctCases>
 <Deaths>18057</Deaths>
 <PctDeaths>0.69</PctDeaths>
 </row>
@@ -491,7 +491,7 @@
 <Country>Norway</Country>
 <Continent>Europe</Continent>
 <Population>5474360</Population>
-<Cases>1508229</Cases>
+<Cases>1508354</Cases>
 <PctCases>27.55</PctCases>
 <Deaths>5732</Deaths>
 <PctDeaths>0.38</PctDeaths>
@@ -509,8 +509,8 @@
 <Country>Lithuania</Country>
 <Continent>Europe</Continent>
 <Population>2718352</Population>
-<Cases>1390091</Cases>
-<PctCases>51.14</PctCases>
+<Cases>1390383</Cases>
+<PctCases>51.15</PctCases>
 <Deaths>9866</Deaths>
 <PctDeaths>0.71</PctDeaths>
 </row>
@@ -518,7 +518,7 @@
 <Country>Slovenia</Country>
 <Continent>Europe</Continent>
 <Population>2119675</Population>
-<Cases>1355567</Cases>
+<Cases>1355613</Cases>
 <PctCases>63.95</PctCases>
 <Deaths>7100</Deaths>
 <PctDeaths>0.52</PctDeaths>
@@ -527,8 +527,8 @@
 <Country>Bulgaria</Country>
 <Continent>Europe</Continent>
 <Population>6687717</Population>
-<Cases>1336414</Cases>
-<PctCases>19.98</PctCases>
+<Cases>1336562</Cases>
+<PctCases>19.99</PctCases>
 <Deaths>38704</Deaths>
 <PctDeaths>2.9</PctDeaths>
 </row>
@@ -671,10 +671,10 @@
 <Country>Latvia</Country>
 <Continent>Europe</Continent>
 <Population>1830211</Population>
-<Cases>981106</Cases>
-<PctCases>53.61</PctCases>
-<Deaths>6523</Deaths>
-<PctDeaths>0.66</PctDeaths>
+<Cases>981771</Cases>
+<PctCases>53.64</PctCases>
+<Deaths>6609</Deaths>
+<PctDeaths>0.67</PctDeaths>
 </row>
 <row>
 <Country>Saudi Arabia</Country>
@@ -716,7 +716,7 @@
 <Country>Sri Lanka</Country>
 <Continent>Asia</Continent>
 <Population>21893579</Population>
-<Cases>672726</Cases>
+<Cases>672729</Cases>
 <PctCases>3.07</PctCases>
 <Deaths>16893</Deaths>
 <PctDeaths>2.51</PctDeaths>
@@ -1022,7 +1022,7 @@
 <Country>Laos</Country>
 <Continent>Asia</Continent>
 <Population>7633779</Population>
-<Cases>218907</Cases>
+<Cases>218908</Cases>
 <PctCases>2.87</PctCases>
 <Deaths>758</Deaths>
 <PctDeaths>0.35</PctDeaths>
@@ -1121,7 +1121,7 @@
 <Country>Cambodia</Country>
 <Continent>Asia</Continent>
 <Population>16944826</Population>
-<Cases>139045</Cases>
+<Cases>139049</Cases>
 <PctCases>0.82</PctCases>
 <Deaths>3056</Deaths>
 <PctDeaths>2.2</PctDeaths>

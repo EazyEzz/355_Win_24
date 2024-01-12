@@ -9,6 +9,8 @@
 import requests
 import html5lib
 from bs4 import BeautifulSoup
+from matplotlib import pyplot as plt
+
 import OutputUtil as ou
 
 
@@ -109,7 +111,9 @@ def make_output(data, assn):
     ou.write_tt_file(assn + ".txt", title, heads, data, align)
     ou.write_csv_file(assn + ".csv", heads, data)
     ou.write_xml_file(assn + ".xml", title, heads, data, True)
-    # do_graph(assn, data, heads)
+    data.sort(key=lambda row: row[2], reverse=True)
+    data_2 = [[data[i][j] for j in range(len(data[0]))] for i in range(40)]
+    do_graph(assn, data_2, title)
     for i in range(len(data)):
         add_wiki_link(data, i, 0)
         add_wiki_link(data, i, 1)
@@ -124,13 +128,18 @@ def make_output(data, assn):
 # ● percentages of population having covid, per country
 # See https://www.geeksforgeeks.org/bar-plot-in-matplotlib/
 def do_graph(assn, data, title):
-    x_label = "Population"
-    y_label = "Cases"
-    x_data = [data[i][2] for i in range(len(data))]
-    y_data = [data[i][3] for i in range(len(data))]
-    x_ticks = ([])
-    y_ticks = ([])
-    ou.write_bar_graph(assn + ".png", title, x_label, x_data, x_ticks, y_label, y_data, y_ticks)
+    x_data = [data[i][0] for i in range(len(data))]
+    y_data = [data[i][4] for i in range(len(data))]
+
+    plt.figure(figsize=(12, 6))
+    plt.bar(x_data, y_data, color='darkgreen')
+    plt.xlabel("Country")
+    plt.ylabel(title)
+    plt.xticks(rotation=45, ha="right", fontsize=10)
+    plt.tight_layout()
+
+    plt.savefig(assn + ".png")
+    plt.show()
 
 
 def main():
