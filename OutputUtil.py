@@ -232,6 +232,7 @@ def write_xml_file(file_name, title, headers, data, do_open=False):
     x_body = nl + create_element("root", x_title + content)
     xml = x_header + x_body
     write_file(file_name, xml)
+    print("Wrote output file", file_name)
     if do_open:
         open_file_in_browser(file_name)
 

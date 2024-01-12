@@ -3,7 +3,7 @@
 # Winter 2024
 # Assignment 4 - Data Scraping, Storage, and Visualization
 # Essmer Sanchez
-# Worked With Class
+# Collaboration: Worked With Class
 
 # [1] Install and import these third-party libraries which are needed in the tasks below
 import requests
@@ -54,8 +54,8 @@ def scrape_covid_data(dict_countries_population):
             if country in ['Channel Islands', 'MS Zaandam']:
                 continue
             population = dict_countries_population[country]
-            percent_cases = round(100 * cases/population, 2)
-            percent_deaths = round(100 * deaths/cases, 2)
+            percent_cases = round(100 * cases / population, 2)
+            percent_deaths = round(100 * deaths / cases, 2)
             data.append([country, continent, population, cases, percent_cases, deaths, percent_deaths])
         except StopIteration:
             break
@@ -68,6 +68,10 @@ def scrape_covid_data(dict_countries_population):
 # [8] Add this population data to the previously scraped data.
 # This is important information because the numbers of COVID cases and deaths per country are
 # more significant relative to that country's population.
+# [9] Define a function to write the data in a text table. Don't hard code values - pass parameters
+# [10] Define a function to write the data in CSV format. Don't hard code values - pass parameters
+# [11] Define a function to write the data as HTML Invoke code from our previous assignment.
+# [12] Define a function to write the data as XML:
 def scrape_population_data():
     url = 'https://www.worldometers.info/world-population/population-by-country/'
     page = requests.get(url)
@@ -99,31 +103,40 @@ def add_wiki_link(data, i, j):
 
 def make_output(data, assn):
     title = "COVID Data By Country"
-    align = ["L", "L", "R", "R", "R","R", "R"]
+    align = ["L", "L", "R", "R", "R", "R", "R"]
     types = ["S", "S", "N", "N", "N", "N", "N"]
-    heads = ["Country", "Continent", "Population", "Cases", "% Cases", "Deaths", "% Deaths"]
-    output_file = "Assignment4.html"
+    heads = ["Country", "Continent", "Population", "Cases", "Pct Cases", "Deaths", "Pct Deaths"]
     ou.write_tt_file(assn + ".txt", title, heads, data, align)
-    ou.write_csv_file(assn + ".csv",heads, data)
+    ou.write_csv_file(assn + ".csv", heads, data)
     ou.write_xml_file(assn + ".xml", title, heads, data, True)
+    # do_graph(assn, data, heads)
     for i in range(len(data)):
         add_wiki_link(data, i, 0)
         add_wiki_link(data, i, 1)
     ou.add_stats(data, [2, 3, 4, 5, 6], 0, 1, True)
-    ou.write_html_file(output_file, title, heads, types, align, data, True)
+    ou.write_html_file(assn + ".html", title, heads, types, align, data, True)
 
-# [9] Define a function to write the data in a text table. Don't hard code values - pass parameters
-# [10] Define a function to write the data in CSV format. Don't hard code values - pass parameters
 
+# [13] Define a function to plot the data in different forms, such as
+# ● number of cases, per country
+# ● number of deaths, per country
+# ● percentages of cases leading to death, per country
+# ● percentages of population having covid, per country
+# See https://www.geeksforgeeks.org/bar-plot-in-matplotlib/
+def do_graph(assn, data, title):
+    x_label = "Population"
+    y_label = "Cases"
+    x_data = [data[i][2] for i in range(len(data))]
+    y_data = [data[i][3] for i in range(len(data))]
+    x_ticks = ([])
+    y_ticks = ([])
+    ou.write_bar_graph(assn + ".png", title, x_label, x_data, x_ticks, y_label, y_data, y_ticks)
 
 
 def main():
-    # url = 'https://www.google.com'
-    # print_page_content(url)
-    # parse_page_content(url)
     dict_countries_population = scrape_population_data()
     data = scrape_covid_data(dict_countries_population)
-    make_html(data)
+    make_output(data, "Assignment4")
 
 
 if __name__ == '__main__':
