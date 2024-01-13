@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browser Page</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <h1>Browser Content</h1>
+    <h2>Navigator Information</h2>
+    <ul>
+        <li> <span id="navigatorInfo"></span></li>
+    </ul>
+
+    <h2>Window Details</h2>
+    <p id="windowDetails"></p>
+
+    <h2>Screen Details</h2>
+    <p id="screenDetails"></p>
+
+    <h2>Location Details</h2>
+    <p id="locationDetails"></p>
+
+    <h2>Geolocation Details</h2>
+    <p id="geolocationDetails"></p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                  document.getElementById('navbar').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navigation bar:', error));
+      })
+
+        const navigatorInfo = document.getElementById('navigatorInfo');
+        navigatorInfo.innerHTML = `
+        <div><strong>appName:</strong> ${navigator.appName}</div>
+        <div><strong>product:</strong> ${navigator.product}</div>
+        <div><strong>appVersion:</strong> ${navigator.appVersion}</div>
+        <div><strong>userAgent:</strong> ${navigator.userAgent}</div>
+        <div><strong>platform:</strong> ${navigator.platform}</div>
+        <div><strong>language:</strong> ${navigator.language}</div>
+           `;
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            function displayWindowSize() {
+                var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                //display the window width and height
+                document.getElementById('windowDetails').innerHTML =
+                    '<strong>Width:</strong> ' + width + 'px,   ' +
+                    '<strong>Height:</strong> ' + height + 'px';
+            }
+
+            function displayScreenSize() {
+                var screenWidth = screen.width;
+                var screenHeight = screen.height;
+                var screenAvailWidth = screen.availWidth;
+                var screenAvailHeight = screen.availHeight;
+                var screenColorDepth = screen.colorDepth;
+                var screenPixelDepth = screen.pixelDepth;
+
+                document.getElementById('screenDetails').innerHTML =
+                    '<strong>Screen Width:</strong>' + screenWidth + 'px, ' +
+                    '<strong>Screen Height:</strong>' + screenHeight + 'px, ' +
+                    '<strong>Available Screen Width:</strong>' + screenAvailWidth + 'px, ' +
+                    '<strong>Available Screen Height:</strong>' + screenAvailHeight + 'px, ' +
+                    '<strong>Color Depth:</strong>' + screenColorDepth + ' bits, ' +
+                    '<strong>Pixel Depth:</strong>' + screenPixelDepth + ' bits';
+            }
+
+            function displayLocationDetails() {
+                var href = location.href;
+                var hostname = location.hostname;
+                var pathname = location.pathname;
+                var protocol = location.protocol;
+
+                document.getElementById('locationDetails').innerHTML =
+                    '<strong>URL (href):</strong> ' + href + '<br>' +
+                    '<strong>Hostname:</strong> ' + hostname + '<br>' +
+                    '<strong>Pathname:</strong> ' + pathname + '<br>' +
+                    '<strong>Protocol:</strong> ' + protocol;
+            }
+
+            function displayGeolocation() {
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+
+                        document.getElementById('geolocationDetails').innerHTML =
+                            '<strong>Latitude:</strong> ' + latitude + '<br>' +
+                            '<strong>Longitude:</strong> ' + longitude;
+                    }, function(error) {
+                        document.getElementById('geolocationDetails').innerHTML =
+                            'Geolocation Error: ' + error.message;
+                    });
+                } else {
+                    document.getElementById('geolocationDetails').innerHTML =
+                        'Geolocation is not supported by your browser.';
+                }
+            }
+
+            displayWindowSize();
+            displayScreenSize();
+            displayLocationDetails();
+            displayGeolocation()
+
+            //update the dimensions in the paragraph when the window is resized
+           window.addEventListener('resize', displayWindowSize);
+            })
+    </script>
+</body>
+</html>
