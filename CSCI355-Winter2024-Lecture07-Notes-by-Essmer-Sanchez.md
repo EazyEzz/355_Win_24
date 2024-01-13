@@ -1,9 +1,8 @@
 ## Queens College
 ## Internet and Web Technology (CSCI 355)
 ## Winter 2024
-## 1/11 Ch: 8 Internet Security Notes
+## 1/11 Lecture07: Internet Security Notes
 ## Essmer Sanchez
-## Collaboration: None
 
 ### Internet Security
 
