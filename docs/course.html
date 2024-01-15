@@ -4,16 +4,38 @@
     <meta charset="UTF-8">
     <title>Course Page</title>
     <style>
+        h2 {
+            text-align: center;
+        }
 
+        ul {
+            font-size: 18px;
+            padding: 0;
+            margin: 20px auto;
+            width: fit-content;
+            list-style-position: inside;
+        }
+
+        ul li {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            text-align: center;
+        }
+
+        ul li {
+            display: inline-block;
+            text-align: left;
+            max-width: 600px;
+        }
     </style>
 </head>
 <body>
     <div id="navbar"></div>
     <h2>Course Content</h2>
     <ul>
-        <li><a href="https://gaia.cs.umass.edu/kurose_ross/eighth.php">Kurose and Ross Author Page</a></li>
-        <li><a href="http://w3schools.com">W3Schools</a></li>
-        <li><a href="https://www.geeksforgeeks.org/web-development/ ">GeeksforGeeks - Web Development</a></li>
+        <li> <span id="navigatorInfo"></span></li>
     </ul>
 
     <script>
@@ -25,6 +47,13 @@
                 })
                 .catch(error => console.error('Error loading the navigation bar:', error));
       })
+
+              const navigatorInfo = document.getElementById('navigatorInfo');
+        navigatorInfo.innerHTML = `
+        <div><a href="https://gaia.cs.umass.edu/kurose_ross/eighth.php">Kurose and Ross Author Page</a></div>
+        <div><a href="http://w3schools.com">W3Schools</a></div>
+        <div><a href="https://www.geeksforgeeks.org/web-development/ ">GeeksforGeeks - Web Development</a></div>
+           `;
     </script>
 </body>
 </html>

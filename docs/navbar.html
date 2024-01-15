@@ -8,27 +8,41 @@
 </nav>
 
 <style>
-  nav ul {
-    list-style-type: none;
+  body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
+    width: 100%;
+    height: 100%;
+  }
+
+  nav {
+    background-color: #2f077f; /* Dark background for the navbar */
+    text-align: center; /* Center align items */
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block; /* Align the list in center */
   }
 
   nav ul li {
-    float: left;
+    display: inline; /* Display list items in a row */
+    margin-right: 20px; /* Increase spacing between elements */
   }
 
   nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
+    display: inline-block;
+    color: #2a046d;
     padding: 14px 16px;
     text-decoration: none;
+    background-color: #f1c300; /* Individual item background color */
+    margin: 5px; /* Spacing between items */
+    font-size: 18px; /* Increase font size */
   }
 
   nav ul li a:hover {
-    background-color: #111;
+    background-color: #991500; /* Hover effect color change */
   }
 </style>

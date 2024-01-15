@@ -4,16 +4,51 @@
     <meta charset="UTF-8">
     <title>Browser Page</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul, p {
+            font-size: 16px;
+            color: #3a079c;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 800px; /* Adjust the max-width as needed */
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .info-section {
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e8e8e8; /* Light gray background for sections */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow for depth */
+        }
+
+        .info-section strong {
+            color: #400190; /* Color for labels */
+        }
     </style>
 </head>
 <body>
     <div id="navbar"></div>
     <h1>Browser Content</h1>
     <h2>Navigator Information</h2>
-    <ul>
-        <li> <span id="navigatorInfo"></span></li>
-    </ul>
+    <p id="navigatorInfo"></p>
+<!--    <ul>-->
+<!--        <li> <span id="navigatorInfo"></span></li>-->
+<!--    </ul>-->
 
     <h2>Window Details</h2>
     <p id="windowDetails"></p>
@@ -57,7 +92,6 @@
                     '<strong>Width:</strong> ' + width + 'px,   ' +
                     '<strong>Height:</strong> ' + height + 'px';
             }
-
             function displayScreenSize() {
                 var screenWidth = screen.width;
                 var screenHeight = screen.height;
@@ -114,7 +148,7 @@
 
             //update the dimensions in the paragraph when the window is resized
            window.addEventListener('resize', displayWindowSize);
-            })
+        })
     </script>
 </body>
 </html>
