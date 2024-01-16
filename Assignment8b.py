@@ -1,7 +1,7 @@
 # Queens College
 # Internet and Web Technology (CSCI 355)
 # Winter 2024
-# Assignment 4 - Data Scraping, Storage, and Visualization
+# Assignment 8b - Encryption and Decryption Part 2
 # Essmer Sanchez
 # Collaboration: Worked With Class
 
@@ -9,7 +9,6 @@
 from numpy import random
 import numpy as np
 import rsa
-from rsa import encrypt, decrypt
 
 
 # [1] Choose a text file and simplify it as follows:
@@ -29,11 +28,11 @@ def sub_ciper(alphabet):
 # our supplement “LT_NetworkSecurity”. More details, if required, can be found on the Internet, including
 # the official Python-RSA homepage at https://stuvel.eu/software/rsa/
 # An elaborate example from TutorialPoint at https://bit.ly/2K6oWHh
-def encrypy(text, cipher):
+def encrypt(text, cipher):
     return ''.join([cipher[ord(c) - 65] for c in text])
 
 
-def decrypy(text, cipher):
+def decrypt(text, cipher):
     return ''.join([chr(cipher.index(c) + 65) for c in text])
 
 
@@ -63,11 +62,11 @@ def write_file(file_name, text):
 
 def main():
     text = read_file('Assignment08d.txt')
-    alphabet = np.array([chr(ord("A") + i) for i in range(26)])
+    alphabet = [chr(ord("A") + i) for i in range(26)]
     cipher = sub_ciper(alphabet)
     encrypted_text = encrypt(text, cipher)
     write_file('Assignment08e2.txt', encrypted_text)
-    decrypted_text = decrypt(encrypted_text, cipher)
+    decrypted_text = decrypt(encrypted_text, cipher.tolist())
     print(decrypted_text)
 
     pub_key, priv_key = get_keys()
@@ -76,7 +75,6 @@ def main():
 
     decrypted_cipher = decrypt_rsa(encrypted_cipher, priv_key)
     print("This is the decrypted cipher: ", decrypted_cipher)
-
 
 
 if __name__ == '__main__':
